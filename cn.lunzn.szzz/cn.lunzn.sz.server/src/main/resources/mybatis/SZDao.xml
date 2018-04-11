@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 用户Dao -->
+<mapper namespace="cn.lunzn.sz.server.dao.SZDao">
+    
+    <!-- SZ配置 -->
+	<resultMap type="cn.lunzn.model.sz.SZ"
+		id="sz">
+		<!-- <result column="id" property="id" /> -->
+		<result column="szid" property="szId" />
+		<result column="staffid" property="staffId" />
+		<result column="staffname" property="staffName" />
+		<result column="position" property="position" />
+		<result column="department" property="department" />
+		<result column="timequantum" property="timeQuantum" />
+		<result column="entrydate" property="entryDate" />
+		<result column="graddate" property="gradDate" />
+		<result column="education" property="education" />
+		<result column="state" property="state" />
+		<result column="workresults" property="workresults" />
+		<result column="evaluation" property="evaluation" />
+		<result column="deficiency" property="deficiency" />
+		<result column="plan" property="plan" />
+		<result column="auditor" property="auditor" />
+		<result column="cc" property="cc" />
+	</resultMap>
+
+	<!-- 分页 -->
+	<sql id="limit_body">
+		limit #{page.offset},#{page.pageSize}
+	</sql>
+	
+	<!-- 新增述职信息 -->
+	<insert id="addSZ" >
+		insert into t_sz_info 
+			(
+				staffid,staffname,position,department,timequantum,entrydate,
+				graddate,education,state,submitdate,workresults,
+				evaluation,deficiency,plan,auditor,cc
+			)
+		value 
+			(
+				#{staffId},#{staffName},#{position},#{department},#{timeQuantum},#{entryDate},
+				#{gradDate},#{education},#{state},#{submitdate},#{workresults},
+				#{evaluation},#{deficiency},#{plan},#{auditor},#{cc}
+			)
+	</insert>
+	
+	<!-- 修改述职信息 -->
+	<update id="updateSZ" >
+		update t_sz_info set
+				timequantum=#{timeQuantum},
+				entrydate=#{entryDate},
+				graddate=#{gradDate},
+				education=#{education},
+				state=#{state},
+				<!-- submitdate=#{submitdate}, -->
+				workresults=#{workresults},
+				evaluation=#{evaluation},
+				deficiency=#{deficiency},
+				plan=#{plan},
+				auditor=#{auditor},
+				cc=#{cc}
+		where szid = #{szId}
+	</update>
+	
+	<!-- 修改述职状态 -->
+	<update id="updateSZState" >
+		update t_sz_info set
+				state=#{state}
+		where szid = #{szId}
+	</update>
+	
+	<!-- 查询述职信息 -->
+	<select id="findSZ" resultMap="sz">
+		SELECT szid,staffid,staffname,position,department,timequantum,entrydate,graddate,education,state,
+				submitdate,workresults,evaluation,deficiency,plan,auditor,cc FROM t_sz_info
+		WHERE 1 = 1
+		<choose>
+		    <when test="isAdmin">
+		        and (state != 1 or staffid = #{staffId})
+		    </when>
+		    <otherwise>
+               <if test="staffId!=null">and staffid = #{staffId}</if>
+            </otherwise>
+		</choose>
+		<if test="szId!=null and szId!=''">and szid = #{szId}</if>
+		<if test="staffName!=null and staffName!=''">and staffname like  CONCAT('%', #{staffName}, '%')</if>
+		<if test="state!=null and state!=''">and state = #{state}</if>
+		<if test="timeQuantum!=null and timeQuantum!=''">and timequantum = #{timeQuantum}</if>
+		<if test="submitdate!=null and submitdate!=''">and submitdate = #{submitdate}</if>
+	    ORDER BY submitdate desc
+		<if test="null != page">
+            <include refid="limit_body" />
+        </if>
+	</select>
+	
+	<!-- 查询述职信息总记录数 -->
+	<select id="findSZTotal" resultType="int">
+		SELECT count(1) FROM t_sz_info 
+		WHERE 1 = 1
+		<choose>
+		    <when test="isAdmin">
+		        and (state != 1 or staffid = #{staffId})
+		    </when>
+		    <otherwise>
+               <if test="staffId!=null">and staffid = #{staffId}</if>
+            </otherwise>
+		</choose>
+		<if test="szId!=null and szId!=''">and szid = #{szId}</if>
+		<if test="staffName!=null and staffName!=''">and staffname like  CONCAT('%', #{staffName}, '%')</if>
+		<if test="state!=null and state!=''">and state = #{state}</if>
+		<if test="timeQuantum!=null and timeQuantum!=''">and timequantum = #{timeQuantum}</if>
+		<if test="submitdate!=null and submitdate!=''">and submitdate = #{submitdate}</if>
+	</select>
+	
+	<!-- 查询述职驳回次数 -->
+	<select id="queryRejectTime" resultType="int">
+		SELECT count(1) FROM t_audit_flow 
+		WHERE handleflag = 2 and state = 2 and auditid = #{szId}
+	</select>
+	
+	<!-- 查询述职驳回次数 -->
+	<select id="querySubmitTime" resultType="int">
+		SELECT count(1) FROM t_sz_info 
+		WHERE timequantum = #{timeQuantum} and staffid = #{staffId}
+		<if test="szId!=null and szId!=''">and szid  != #{szId}</if>
+	</select>
+	
+</mapper>

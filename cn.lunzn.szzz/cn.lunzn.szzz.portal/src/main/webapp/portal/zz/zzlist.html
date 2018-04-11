@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">zz</title>
+<script type="text/javascript" src="../../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript" src="js/zzlist.js"></script>
+</head>
+<body>
+
+	<div style="margin-top: 80px;">
+		<div class="container form-horizontal">
+			
+			<!-- 筛选条件 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+				    <div class="form-group col-md-5">
+			            <label class="col-md-3 control-label i18n-text">full_name</label>
+			            <div class="col-md-9">
+					      <div class="input-group">
+						      <input class="form-control i18n-text" maxlength="20" type="text" id="staffName" mkey="staffName" placeholder="full_name">
+						      <span class="input-group-addon clear-data">
+		                          <span class="glyphicon glyphicon-remove"></span>
+		                      </span>
+	                      </div>
+					    </div>
+			        </div>
+			        
+			        <div class="form-group col-md-5">
+			            <label class="col-md-3 control-label i18n-text">zz_state</label>
+			            <div class="col-md-9">
+				            <select class="form-control combobox selectpicker" mkey="state">
+							  <option class="i18n-text" value="0">option_all</option>
+							  <option class="i18n-text" value="1">option_edit</option>
+							  <option class="i18n-text" value="2">option_audit</option>
+							  <option class="i18n-text" value="3">option_pass</option>
+							  <option class="i18n-text" value="4">option_reject</option>
+							</select>
+			            </div>
+			        </div>
+			        
+					<div class="form-group col-md-2" align="right">
+					    <button id="queryBtn" class="btn btn-danger i18n-text" type="button">query</button>
+					    <button id="clearBtn" class="btn btn-default i18n-text" type="button">clear</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12 col-md-12" align="right">
+			        <button id="zzApplyBtn" class="btn btn-danger i18n-text " type="button">zz_apply</button>
+				</div>
+			</div>
+			
+			<!-- 筛选表格 -->
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-xs-12 col-md-12">
+					<table id="zzTable" class="table table-hover table-striped">
+				      <thead>
+				        <tr>
+				          <th class="i18n-text" mkey="zzId">id</th>
+				          <th class="i18n-text" mkey="zzDate">zz_date</th>
+				          <th class="i18n-text" mkey="staffName">full_name</th>
+				          <th class="i18n-text" mkey="entryDate">joined_date</th>
+				          <th class="i18n-text" mkey="state">zz_state</th>
+				          <th class="i18n-text" mkey="submitDate">submit_datetime</th>
+				          <th class="i18n-text" mkey="operation">operation</th>
+				        </tr>
+				      </thead>
+				      <tbody></tbody>
+				    </table>
+				    
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

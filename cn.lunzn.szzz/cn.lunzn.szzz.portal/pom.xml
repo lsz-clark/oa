@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>cn.lunzn.szzz</groupId>
+		<artifactId>cn.lunzn.szzz</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>cn.lunzn.szzz.portal</artifactId>
+
+	<name>cn.lunzn.szzz.portal</name>
+	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>cn.lunzn.szzz</groupId>
+			<artifactId>cn.lunzn.common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.lunzn.szzz</groupId>
+			<artifactId>cn.lunzn.model</artifactId>
+		</dependency>
+        
+        <!-- 用war方式打包的时候排除内置tomcat -->
+		<!-- <dependency> 
+			<groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<version>${spring.boot.version}</version>
+			<scope>provided</scope> 
+		</dependency> -->
+        
+		<!-- spring-boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-dependencies</artifactId>
+			<version>${spring.boot.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+
+		<!-- spring-boot devhot -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
+			<version>1.4.3.RELEASE</version> <optional>true</optional> </dependency> -->
+
+		<!-- <dependency> <groupId>org.mybatis.spring.boot</groupId> <artifactId>mybatis-spring-boot-starter</artifactId> 
+			<version>1.1.1</version> </dependency> mysql database driver <dependency> 
+			<groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> </dependency> -->
+
+		<!-- json -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		
+		<!-- jsoup -->
+		<dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+        </dependency>
+        
+        <!-- apache lang -->
+	    <dependency>  
+             <groupId>commons-lang</groupId>
+             <artifactId>commons-lang</artifactId>
+        </dependency>
+	</dependencies>
+	
+	        
+
+	<!-- <build> <plugins> <plugin> <groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-maven-plugin</artifactId> </plugin> war 插件来定义打包以后的 
+		war 包名称 <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
+		<configuration> <warName>springboot</warName> </configuration> </plugin> 
+		</plugins> </build> -->
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <warName>szzz</warName>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+	<!-- <build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/webapp</directory>
+				注意此次必须要放在此目录下才能被访问到
+				<targetPath>META-INF/resources</targetPath>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build> -->
+</project>

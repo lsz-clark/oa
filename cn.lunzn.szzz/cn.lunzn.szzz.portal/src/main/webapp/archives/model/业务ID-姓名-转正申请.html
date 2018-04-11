@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>业务ID-姓名-转正申请</title>
+    <style type="text/css">
+        html,body{
+            margin: 0px 0px;font-size: 13px !important;
+            /* 微软雅黑，新宋体 */
+            font-family: "Microsoft Yahei","NSimSun";
+        }
+
+        .mainTitle {
+            font-size: 32px;
+            fong-weight: normal !important;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        /* 基本信息 */
+        .baseInfo {
+            width: 65%;
+            line-height: 35px;
+        }
+
+        /* 基本信息标题 */
+        label {
+            font-weight: bold;
+        }
+
+        /* 设置绝对位置的标题 */
+        .absTitle {
+            font-size: 26px;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        
+        /* 等级评定评星 */
+        .star-rating {
+            unicode-bidi: bidi-override;
+            color: #000;
+            font-size: 0;
+            height: 25px;
+            margin: 0 auto;
+            position: relative;
+            display: table;
+            padding: 0;
+            text-shadow: 0px 1px 0 #a2a2a2;
+        }
+        .star-rating span {
+            padding: 5px;
+            font-size: 35px;
+        }
+        .star-rating-bottom {
+            padding: 0;
+            display: block;
+            z-index: 0;
+        }
+
+        /* 文本输入框仅保留下边框 */
+        .removeBorder {
+            border-top-style: none;
+            border-right-style: none;
+            border-left-style: none;
+            border-bottom-style: solid;
+            border-color: #CCC;
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单标题 -->
+    <br/>
+    <br/>
+    <center>
+        <text class="mainTitle">员工转正申请</text>
+    </center>
+
+    <!-- 填表日期 -->
+    <div align="center">
+        <div align="right" style="width: 65%;">
+            <div style="width: 50%;float: right;" align="left">
+                <div style="width: 50%;float: left;" align="right">
+                    <label>填表日期</label>
+                </div>
+                <span id="submitTime" style="margin-left: 10%;"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 员工申请信息 -->
+    <div>
+        <!-- 基本信息 -->
+        <div align="center">
+            <div align="left" style="width: 60%;">
+                <text class="absTitle" style="position: relative;top: 30px;">基本信息</text>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: right;color: red;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <span>&nbsp;</span>
+                    </div>
+                    <span style="margin-left: 10%;font-size: 12px;display: none;">驳回&nbsp;
+                        <font id="rejectCount"></font>
+                    </span>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div align="center">
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>姓名</label>
+                    </div>
+                    <span id="staffName" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>部门</label>
+                    </div>
+                    <span id="department" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label style="margin-left: 10%;">职位</label>
+                    </div>
+                    <span id="position" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>入职日期</label>
+                    </div>
+                    <span id="entryDate" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>学历</label>
+                    </div>
+                    <span id="education" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>毕业日期</label>
+                    </div>
+                    <span id="gradDate" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>拟转正日期</label>
+                    </div>
+                    <span id="zzDate" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label></label>
+                    </div>
+                    <span id="" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 工作成果 -->
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px;">
+                <text class="absTitle">工作成果</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="effort" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+        </div>
+    
+        <!-- 个人收获 -->
+        <br/>
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px;">
+                 <text class="absTitle">个人收获</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="gain" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+        </div>
+    
+        <!-- 心得&建议 -->
+        <br/>
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px;">
+                 <text class="absTitle">心得&建议</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="suggest" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+        </div>
+     <!-- 分割线 -->
+    <br/>
+    <hr style="width: 65%;height: 1px;border: none;border-top:1px solid #ccc;" />
+    
+    <!-- 审核记录 -->
+    <div id="auditInfo" align="center"></div>
+    <br/>
+    <br/>
+    <script type="text/javascript">
+        var texts = document.getElementsByTagName('textarea');
+        for (var i = 0; i < texts.length; i++) {
+        	texts[i].style.height = texts[i].scrollHeight + "px";
+        }
+    </script>
+</body>
+</html>

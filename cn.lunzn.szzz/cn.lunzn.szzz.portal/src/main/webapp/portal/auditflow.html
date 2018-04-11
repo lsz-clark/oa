@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">let_me_check</title>
+<link href="../theme/3party/css/bootstrap-datetimepicker-4.17.47.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript" src="../theme/3party/js/moment-2.18.1.min.js" ></script>
+<script type="text/javascript" src="../theme/3party/js/zh-cn-2.18.1.js" ></script>
+<script type="text/javascript" src="../theme/3party/js/bootstrap-datetimepicker-4.17.47.min.js" ></script>
+
+<script type="text/javascript" src="auditflow.js??v=20180328"></script>
+</head>
+<body>
+
+	<div style="margin-top: 80px;">
+		<div class="container form-horizontal">
+			<!-- <div class="row" style="margin-bottom: 10px;">
+				<div class="col-xs-12 col-md-12">
+					<ol class="breadcrumb">
+					  <li><a href="#" id=""><span class="glyphicon glyphicon-home"></span></a></li>
+					  <li class="active i18n-text">let_me_check</li>
+					</ol>
+			    </div>
+			</div> -->
+		    
+			<!-- tab页 -->
+			<!-- <div class="row" style="margin-bottom: 10px;">
+				<div class="col-xs-12 col-md-12">
+					<ul class="nav nav-tabs">
+					  <li role="presentation" class="active"><a href="#" id="year_report_badge" class="i18n-text">sz</a></li>
+		              <li role="presentation"><a href="auditflow-zz.html" id="staff_worker_badge" class="i18n-text">zz</a></li>
+					</ul>
+			    </div>
+			</div> -->
+			
+			<!-- 筛选条件 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+				    <div class="form-group col-md-5">
+			            <label class="col-md-3 control-label i18n-text">full_name</label>
+			            <div class="col-md-9">
+					      <div class="input-group">
+						      <input class="form-control i18n-text" maxlength="20" type="text" id="submitStaffName" mkey="submitStaffName" placeholder="full_name">
+						      <span class="input-group-addon clear-data">
+		                          <span class="glyphicon glyphicon-remove"></span>
+		                      </span>
+	                      </div>
+					    </div>
+			        </div>
+			        
+			        <div class="form-group col-md-5">
+			            <label class="col-md-3 control-label i18n-text">submit_datetime</label>
+			            <div class="col-md-9">
+			                <div class="input-group date" id="datetimeParentDiv">
+				                <input type="text" id="starttime" mkey="starttime" class="form-control">
+				                <span class="input-group-addon">
+			                        <span class="glyphicon glyphicon-calendar"></span>
+			                    </span>
+			                    <input type="text" id="endtime" mkey="endtime" class="form-control">
+			                     <span class="input-group-addon">
+			                        <span class="glyphicon glyphicon-calendar"></span>
+			                    </span>
+						    </div>
+			            </div>
+			        </div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+				    <div class="form-group col-md-5">
+				        <label class="col-md-3 control-label i18n-text">audit_type</label>
+			            <div class="col-md-9">
+					       <select class="form-control combobox  selectpicker" mkey="auditType">
+							  <option class="i18n-text" value="0">option_all</option>
+							  <option class="i18n-text" value="1">sz</option>
+							  <option class="i18n-text" value="2">zz</option>
+							</select>
+					    </div>
+				    </div>
+				
+				    <div class="form-group col-md-5">
+				        <label class="col-md-3 control-label i18n-text">handle_flag</label>
+			            <div class="col-md-9">
+					       <select class="form-control combobox  selectpicker" mkey="handleFlag">
+							  <option class="i18n-text" value="0">option_all</option>
+							  <option class="i18n-text" value="1">handle_no</option>
+							  <option class="i18n-text" value="2">handle_ok</option>
+							</select>
+					    </div>
+				    </div>
+				    
+				    <div class="form-group col-md-2" align="right">
+					    <button id="queryBtn" class="btn btn-danger i18n-text" type="button">query</button>
+					    <button id="clearBtn" class="btn btn-default i18n-text" type="button">clear</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 筛选表格 -->
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-xs-12 col-md-12">
+					<table id="auditFlowTable" class="table table-hover table-striped">
+				      <!-- <caption>Optional table caption.</caption> -->
+				      <thead>
+				        <tr>
+				          <th class="i18n-text" mkey="flowId">id</th>
+				          <th class="i18n-text" mkey="submitStaffName">full_name</th>
+				          <th class="i18n-text" mkey="auditType">audit_type</th>
+				          <th class="i18n-text" mkey="handleFlag">handle_flag</th>
+				          <th class="i18n-text" mkey="state">audit_state</th>
+				          <th class="i18n-text" mkey="beginTime">submit_datetime</th>
+				          <th class="i18n-text" mkey="operation">operation</th>
+				        </tr>
+				      </thead>
+				      <tbody></tbody>
+				    </table>
+				    
+				    <!-- <nav aria-label="Page navigation" style="float: right;">
+					  <ul class="pagination pagination-index" style="margin-top:0px;float: right; ">
+					    <li>
+					      <a href="#" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    <li><a href="#">1</a></li>
+					    <li><a href="#">2</a></li>
+					    <li><a href="#">3</a></li>
+					    <li><a href="#">4</a></li>
+					    <li><a href="#">5</a></li>
+					    <li>
+					      <a href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+					  </ul>
+					  
+					  <div class="pagination-total" style="float: right;margin-top: 8px;margin-right: 5px;">共25436条</div>
+					  
+					  <div style="float: right;margin-right: 5px;">
+						  <div class="btn-group">
+							  <button type="button" style="height: 33px;" class="btn btn-default dropdown-toggle pagination-size" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    10 <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" style="width: 55px;min-width: 0px;">
+							    <li><a href="#" style="padding: 3px 12px;">10</a></li>
+							    <li><a href="#" style="padding: 3px 12px;">30</a></li>
+							    <li><a href="#" style="padding: 3px 12px;">50</a></li>
+							    <li><a href="#" style="padding: 3px 12px;">100</a></li>
+							  </ul>
+						 </div>
+					  </div>
+					</nav> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

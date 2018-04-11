@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">report_work</title>
+<link href="../../theme/3party/css/bootstrap-datetimepicker-4.17.47.min.css" rel="stylesheet">
+<link href="../../theme/3party/css/bootstrap-switch-3.3.4.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="../../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript" src="../../theme/3party/js/moment-2.18.1.min.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/zh-cn-2.18.1.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/bootstrap-switch-3.3.4.min.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/bootstrap-datetimepicker-4.17.47.min.js" ></script>
+
+<script type="text/javascript" src="./js/reportList.js??v=20180328"></script>
+</head>
+<body>
+	
+	<div style="margin-top: 80px;">
+		<div class="container form-horizontal">
+			<!-- 筛选条件 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+				    <div class="form-group col-md-5">
+			            <label class="col-md-3 control-label i18n-text">full_name</label>
+			            <div class="col-md-9">
+					      <div class="input-group">
+						      <input class="form-control i18n-text" maxlength="20" type="text" id="staffName" mkey="staffName" placeholder="full_name">
+						      <span class="input-group-addon clear-data">
+		                          <span class="glyphicon glyphicon-remove"></span>
+		                      </span>
+	                      </div>
+					    </div>
+			        </div>
+			        
+			        <div class="form-group col-md-5">
+			            <label class="col-md-3 control-label i18n-text">report_state</label>
+			            <div class="col-md-9">
+				            <select class="form-control combobox  selectpicker" id="state">
+							  <option  class="i18n-text" value="0">option_all</option>
+							  <option  class="i18n-text" value="1">option_edit</option>
+							  <option  class="i18n-text" value="2">option_audit</option>
+							  <option  class="i18n-text" value="3">option_pass</option>
+							  <option  class="i18n-text" value="4">option_reject</option>
+							</select>
+			            </div>
+			        </div>
+			        
+					<div class="form-group col-md-2" align="right">
+				        <button id="queryBtn" class="btn btn-danger i18n-text" type="button">query</button>
+				        <button id="clearBtn" class="btn btn-default i18n-text" type="button">clear</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12 col-md-12" align="right">
+			        <button id="reportBtn" class="btn btn-danger i18n-text " type="button">report_work</button>
+				</div>
+			</div>
+			<!-- 筛选表格 -->
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-xs-12 col-md-12">
+					<table id="reportWorkTable" class="table table-hover table-striped">
+				      <!-- <caption>Optional table caption.</caption> -->
+				      <thead>
+				        <tr>
+				          <th class="i18n-text" mkey="szId">id</th>
+				          <th class="i18n-text" mkey="timeQuantum">time_quantum</th>
+				          <th class="i18n-text" mkey="staffName">full_name</th>
+				          <th class="i18n-text" mkey="entryDate">joined_date</th>
+				          <th class="i18n-text" mkey="reportState">report_state</th>
+				          <th class="i18n-text" mkey="submitdate">submit_datetime</th>
+				          <th class="i18n-text" mkey="operation">operation</th>
+				        </tr>
+				      </thead>
+				      <tbody></tbody>
+				    </table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

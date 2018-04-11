@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">zz</title>
+<link
+	href="../../theme/3party/css/bootstrap-datetimepicker-4.17.47.min.css"
+	rel="stylesheet">
+
+<script type="text/javascript"
+	src="../../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript"
+	src="../../theme/3party/js/moment-2.18.1.min.js"></script>
+<script type="text/javascript"
+	src="../../theme/3party/js/zh-cn-2.18.1.js"></script>
+<script type="text/javascript"
+	src="../../theme/3party/js/bootstrap-datetimepicker-4.17.47.min.js"></script>
+
+<link href="../../theme/3party/css/pnotify.brighttheme-3.2.1.css"
+	rel="stylesheet">
+<link href="../../theme/3party/css/pnotify-3.2.1.css" rel="stylesheet">
+<script type="text/javascript"
+	src="../../theme/3party/js/pnotify-3.2.1.js"></script>
+
+<script type="text/javascript" src="../../theme/js/choose_audit.js??v=20180328"></script>
+
+<script type="text/javascript" src="js/zzaudit.js??v=20180328"></script>
+</head>
+<body>
+	<div style="margin-top: 60px;">
+		<div class="container form-horizontal">
+
+			<!-- 表单标题 -->
+			<div class="row">
+				<div class="text-center col-xs-12 col-md-12">
+					<h2 class="i18n-text">zz_title</h2>
+					<input type="hidden" mkey="zzId">
+				</div>
+			</div>
+
+			<!-- 填表日期 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-9" style="text-align: right;">
+						<span class="i18n-text">zz_form_date</span> <span
+							id="zz_form_date">&nbsp;</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- 基本信息 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+					    <div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_base_info</h3>
+						</div>
+						<div style="float: left; width: 20%;">
+							<div style="margin-top: 25px; float: right;">
+							    <label style="color: red;display: none;" class="i18n-text">option_reject</label>
+							    <label style="color: red;display: none;" id="rejectLabel"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<!-- 姓名 -->
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label i18n-text">full_name</label>
+						<div class="col-md-8">
+							<!-- <span mkey="staffName" class="view-control"></span> -->
+							<input mkey="staffName" type="text" class="form-control" readonly="readonly">
+						</div>
+
+					</div>
+					<!-- 所在部门 -->
+					<div class="form-group col-md-6">
+						<label class="col-md-3 control-label i18n-text">department</label>
+						<div class="col-md-8">
+							<!-- <span mkey="department" id="department" class="view-control"></span> -->
+							<input mkey="department" type="text" class="form-control" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<!-- 职位 -->
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label i18n-text">position</label>
+						<div class="col-md-8">
+							<!-- <span mkey="position" id="position" class="view-control"></span> -->
+							<input mkey="position" type="text" class="form-control" readonly="readonly">
+						</div>
+					</div>
+					<!-- 入职日期 -->
+					<div class="form-group col-md-6">
+						<label class="col-md-3 control-label i18n-text">joined_date</label>
+						<div class="col-md-8">
+							<!-- <span mkey="entryDate" class="view-control"></span> -->
+							<input mkey="entryDate" type="text" class="form-control" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<!-- 学历 -->
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label i18n-text">education</label>
+						<div class="col-md-8">
+							<!-- <span mkey="education" class="view-control"></span> -->
+							<input mkey="education" type="text" class="form-control" readonly="readonly">
+						</div>
+					</div>
+					<!-- 毕业日期 -->
+					<div class="form-group col-md-6">
+						<label class="col-md-3 control-label i18n-text">graddate</label>
+						<div class="col-md-8">
+							<!-- <span mkey="gradDate" class="view-control"></span> -->
+							<input mkey="gradDate" type="text" class="form-control" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 拟转正日期 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label i18n-text">zz_staff_zzdate</label>
+						<div class="col-md-8">
+							<!-- <span mkey="zzDate" class="view-control"></span> -->
+							<input mkey="zzDate" type="text" class="form-control" readonly="readonly">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 工作成果 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<h3 class="i18n-text">zz_effort</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<!-- <div class="view-textare-control" mkey="effort"></div> -->
+						<textarea class="form-control" mkey="effort" rows="5" readonly="readonly"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<!-- 个人收获 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<h3 class="i18n-text">zz_gain</h3>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<!-- <div class="view-textare-control" mkey="gain"></div> -->
+						<textarea class="form-control" mkey="gain" rows="5" readonly="readonly"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<!-- 心得&建议 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<h3 class="i18n-text">zz_suggest</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<!-- <div class="view-textare-control" mkey="suggest"></div> -->
+						<textarea class="form-control" mkey="suggest" rows="5" readonly="readonly"></textarea>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- 审核人 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_auditor</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10" id="bootstrapGrowl">
+						<!-- 审核人tags  -->
+						<div id="auditorTags">
+							<!-- 添加按钮 -->
+							<div class="auditor_add" style="width: 45px;">
+								<div style="width:45px;margin-left:0px;">
+									<img alt="" src="../../theme/images/auditor/selectadd.png" style="width:40px;height: 40px;display: inline-block">
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 抄送人-->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_sec_auditor</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10" id="bootstrapGrowl">
+						<!-- 抄送人tags  -->
+						<div id="copyAuditorTags">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+            
+			<!-- 历史审核区域 -->
+			<div>
+				<div class="panel panel-default" id="historyAuditDiv" style="display: none;margin-top: 15px;">
+				    <div class="panel-heading" align="center" id="historyAuditBtn" style="cursor: pointer;border: 0px;">
+						<label class="i18n-text">history_audit</label>
+						<span id="history-Un-Fold" class="glyphicon glyphicon-plus"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- 部门审核区域 -->
+			<div id="dept-audit" style="display: none;">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-11">
+							<h3 class="i18n-text">zz_level_check</h3>
+						</div>
+						<div class="col-md-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<div class="view-control" style="font-size: 25px;">
+								<span class="dept-start glyphicon glyphicon-star" value="1"></span>&nbsp;
+								<span class="dept-start glyphicon glyphicon-star" value="2"></span>&nbsp;
+								<span class="dept-start glyphicon glyphicon-star" value="3"></span>&nbsp;
+								<span class="dept-start glyphicon glyphicon-star" value="4"></span>&nbsp;
+								<span class="dept-start glyphicon glyphicon-star-empty"
+									value="5"></span>&nbsp;&nbsp; <label id="label-level" value="4"
+									class="i18n-text">level_4</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-11">
+							<h3 class="i18n-text">zz_type_check</h3>
+						</div>
+						<div class="col-md-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-1"></div>
+						<div class="col-md-11">
+							<div class="view-textare-control">
+								<div>
+									<input type="radio" value="1" tokey="" name="zzTypeRadio"
+										checked="checked">&nbsp; <label class="i18n-text">zz_type_normal</label>
+								</div>
+
+								<div style="margin-top: 10px;">
+									<div style="float: left; margin-top: 10px; margin-right: 10px;">
+										<input type="radio" value="2" tokey="advanceDate"
+											name="zzTypeRadio">&nbsp; <label class="i18n-text">zz_type_advance</label>
+									</div>
+
+									<div class="input-group date" id="advanceDatePik"
+										style="width: 150px; float: left;">
+										<input type="text" maxlength="10" id="advanceDate"
+											mkey="advanceDate" class="form-control width_150"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+
+								<div style="clear: both;"></div>
+
+								<div style="margin-top: 10px;">
+									<div style="float: left; margin-top: 10px; margin-right: 10px;">
+										<input type="radio" value="3" tokey="laterDate"
+											name="zzTypeRadio">&nbsp; <label class="i18n-text">zz_type_later</label>
+									</div>
+									<div class="input-group date" id="laterDatePik"
+										style="width: 150px; float: left;">
+										<input type="text" maxlength="10" id="laterDate"
+											mkey="laterDate" class="form-control width_150"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+
+								<div style="clear: both;"></div>
+
+								<div style="margin-top: 10px;">
+									<div style="float: left; margin-top: 10px; margin-right: 36px;">
+										<input type="radio" value="4" tokey="dismissDate"
+											name="zzTypeRadio">&nbsp; <label class="i18n-text">zz_type_dismiss</label>
+									</div>
+									<div class="input-group date" id="dismissDatePik"
+										style="width: 150px; float: left;">
+										<input type="text" id="dismissDate" maxlength="10"
+											mkey="dismissDate" class="form-control width_150"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+
+								<div style="clear: both;"></div>
+
+								<div style="margin-top: 10px;">
+									<div style="float: left; margin-top: 10px; margin-right: 36px;">
+										<input type="radio" value="5" tokey="transfer"
+											name="zzTypeRadio">&nbsp; <label class="i18n-text">zz_type_transfer</label>
+									</div>
+									<div style="float: left;">
+										<input type="text" maxlength="50" id="transfer"
+											mkey="transfer" class="form-control width_150">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-11">
+							<h3 class="i18n-text">zz_comment</h3>
+						</div>
+						<div class="col-md-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<textarea id="deptComment" mkey="deptComment"
+								class="form-control i18n-text" maxlength="1024" rows="5"
+								placeholder="agree"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 人事审核区域 -->
+			<div id="hr-audit" style="display: none;">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-11">
+							<h3 class="i18n-text">zz_comment</h3>
+						</div>
+						<div class="col-md-1"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<textarea id="hrComment" mkey="hrComment"
+								class="form-control i18n-text" maxlength="1024" rows="5"
+								placeholder="agree"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 按钮 -->
+			<div id="auditGroupBtn" class="row" style="display: none;">
+				<br>
+				<div class="col-xs-12 col-md-12">
+					<div class="form-group col-md-12">
+						<div class="col-md-12" align="center">
+							<!-- 通过 -->
+							<button id="passBtn" class="btn btn-danger width_100 i18n-text"
+								type="button">option_pass</button>
+							<!-- 驳回 -->
+							<button id="rejectBtn"
+								class="btn btn-default width_100 i18n-text" type="button">option_reject</button>
+							<!-- 返回 -->
+							<button id="backBtn" class="btn btn-default width_100 i18n-text"
+								type="button">back</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

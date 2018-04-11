@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 审核电子流 -->
+<mapper namespace="cn.lunzn.sz.server.dao.AuditFlowDao">
+    
+	<resultMap type="cn.lunzn.model.common.AuditFlow"
+		id="auditFlow">
+		<!-- <result column="id" property="id" /> -->
+		<result column="flowid" property="flowId" />
+		<result column="submitstaffname" property="submitStaffName" />
+		<result column="submitstaffid" property="submitStaffId" />
+		<result column="staffname" property="staffName" />
+		<result column="staffid" property="staffId" />
+		<result column="audittype" property="auditType" />
+		<result column="auditid" property="auditId" />
+		<result column="handleflag" property="handleFlag" />
+		<result column="auditstep" property="auditStep" />
+		<result column="auditvalue" property="auditValue" />
+		<result column="state" property="state" />
+		<result column="begintime" property="beginTime" />
+		<result column="finishtime" property="finishTime" />
+	</resultMap>
+
+	<!-- 分页 -->
+	<sql id="limit_body">
+		limit #{page.offset},#{page.pageSize}
+	</sql>
+	
+	<!-- 查询数据 -->
+	<select id="find" resultMap="auditFlow">
+		SELECT flowid,submitstaffname,submitstaffid,staffname,staffid,audittype,auditid,handleflag,
+		auditstep,auditvalue,state,begintime,finishtime FROM t_audit_flow
+		WHERE 1 = 1
+		<if test="flowId!=null">and flowid = #{flowId}</if>
+		<if test="auditId!=null">and auditid = #{auditId}</if>
+		<if test="staffId!=null">and staffid = #{staffId}</if>
+		<if test="auditType!=null">and audittype = #{auditType}</if>
+		<if test="handleFlag!=null">and handleflag = #{handleFlag}</if>
+		<if test="state!=null">and state = #{state}</if>
+		<if test="submitStaffName!=null">and submitstaffname like CONCAT('%',#{submitStaffName},'%')</if>
+		<if test="startTime!=null and startTime!=''"><![CDATA[AND begintime >= #{startTime}]]></if>
+		<if test="endTime!=null and endTime!=''"><![CDATA[AND begintime <= #{endTime}]]></if>
+	    ORDER BY begintime DESC
+		<if test="null != page">
+            <include refid="limit_body" />
+        </if>
+	</select>
+	
+	<!-- 查询总记录数 -->
+	<select id="findTotal" resultType="int">
+		SELECT count(1) FROM t_audit_flow
+		WHERE 1 = 1
+		<if test="flowId!=null">and flowid = #{flowId}</if>
+		<if test="auditId!=null">and auditid = #{auditId}</if>
+		<if test="staffId!=null">and staffid = #{staffId}</if>
+		<if test="auditType!=null">and audittype = #{auditType}</if>
+		<if test="handleFlag!=null">and handleflag = #{handleFlag}</if>
+		<if test="state!=null">and state = #{state}</if>
+		<if test="submitStaffName!=null">and submitstaffname like CONCAT('%',#{submitStaffName},'%')</if>
+		<if test="startTime!=null and startTime!=''"><![CDATA[AND begintime >= #{startTime}]]></if>
+		<if test="endTime!=null and endTime!=''"><![CDATA[AND begintime <= #{endTime}]]></if>
+	</select>
+	
+	<!-- 添加 -->
+   <insert id="insert">
+		INSERT INTO `t_audit_flow` (`flowid`,`submitstaffname`,`submitstaffid`,`staffname`,`staffid`,`audittype`,`auditid`,`handleflag`,`auditstep`,`begintime`,`finishtime`) 
+		VALUES(#{flowId},#{submitStaffName},#{submitStaffId},#{staffName},#{staffId},#{auditType},#{auditId},#{handleFlag},#{auditStep},#{beginTime},#{finishTime})
+   </insert>
+   
+   <!-- 更新 -->
+   <update id="update">
+		UPDATE `t_audit_flow` SET `handleflag` = #{handleFlag},`auditvalue` = #{auditValue},`state` = #{state},`finishtime` = #{finishTime} 
+		WHERE `flowid` = #{flowId}
+   </update>
+   
+   <!-- 更新 -->
+   <update id="delete">
+		DELETE FROM `t_audit_flow` WHERE `auditid` = #{auditId}
+   </update>
+</mapper>

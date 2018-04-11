@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title class="i18n-text">业务ID-姓名-年份-述职报告</title>
+    <style type="text/css">
+        html,body{
+            margin: 0px 0px;font-size: 13px !important;
+            /* 微软雅黑，新宋体 */
+            font-family: "Microsoft Yahei","NSimSun";
+            
+        }
+        
+        .mainTitle {
+            font-size: 32px;
+            fong-weight: normal !important;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        
+        h2, h3{
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        /* 基本信息 */
+        .baseInfo {
+            width: 65%;
+            line-height: 35px;
+        }
+
+        /* 基本信息标题 */
+        label {
+            font-weight: bold;
+        }
+
+        /* 设置绝对位置的标题 */
+        .absTitle {
+            font-size: 26px;
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单标题 -->
+    <br/>
+    <br/>
+    <center>
+        <text class="mainTitle">年度述职报告</text>
+    </center>
+
+    <!-- 填表日期 -->
+    <div align="center">
+        <div align="right" style="width: 65%;">
+            <div style="width: 50%;float: right;" align="left">
+                <div style="width: 50%;float: left;" align="right">
+                    <label>填表日期</label>
+                </div>
+                <span id="submitTime" style="margin-left: 10%;"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 员工申请信息 -->
+    <div>
+        <!-- 基本信息 -->
+        <div align="center">
+            <div align="left" style="width: 60%;">
+                <text class="absTitle" style="position: relative;top: 30px;">基本信息</text>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: right;color: red;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <span>&nbsp;</span>
+                    </div>
+                    <span style="margin-left: 10%;font-size: 12px;display: none;">驳回&nbsp;
+                        <font id="rejectCount"></font>
+                    </span>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div align="center">
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>姓名</label>
+                    </div>
+                    <span id="staffName" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>部门</label>
+                    </div>
+                    <span id="department" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label style="margin-left: 10%;">职位</label>
+                    </div>
+                    <span id="position" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>入职日期</label>
+                    </div>
+                    <span id="entryDate" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>学历</label>
+                    </div>
+                    <span id="education" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>毕业日期</label>
+                    </div>
+                    <span id="gradDate" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+            <div class="baseInfo">
+                <div style="width: 50%;float: left;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label>述职年份</label>
+                    </div>
+                    <span id="timequantum" style="margin-left: 10%;"></span>
+                </div>
+                <div style="width: 50%;float: right;" align="left">
+                    <div style="width: 50%;float: left;" align="right">
+                        <label></label>
+                    </div>
+                    <span id="" style="margin-left: 10%;"></span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 工作总结 -->
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px;">
+                <text class="absTitle">工作总结</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="workresults" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    
+        <!-- 自我评价 -->
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px;">
+                 <text class="absTitle">自我评价</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="evaluation" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    
+        <!-- 不足&改进 -->
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px;">
+                 <text class="absTitle">不足&改进</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="deficiency" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    
+        <!-- 成长规划 -->
+        <div align="center">
+            <div align="left" style="width: 60%;font-size: 26px; !important;">
+                 <text class="absTitle">成长规划</text>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <div align="center" style="width: 55%;text-align: left;margin-left: 10%;">
+                <textarea id="plan" style="width: 100%;border: 0px;overflow:hidden;" readonly="readonly"></textarea>
+            </div>
+            <br/>
+        </div>
+    </div>
+    
+    <!-- 分割线 -->
+    <br/>
+    <hr style="width: 65%;height: 1px;border: none;border-top:1px solid #ccc;" />
+    
+    <!-- 审核记录 -->
+    <div id="auditInfo"></div>
+    <br/>
+    <br/>
+    <script type="text/javascript">
+        var texts = document.getElementsByTagName('textarea');
+        for (var i = 0; i < texts.length; i++) {
+            texts[i].style.height = texts[i].scrollHeight + "px";
+        }
+    </script>
+</body>
+</html>

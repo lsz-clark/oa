@@ -1,0 +1,159 @@
+@CHARSET "UTF-8";
+input::-ms-clear{display:none;}
+
+/* input check style */
+.ak_checkout_talk_default1{margin-top: 5px;padding: 0;box-sizing: border-box;font-family: inherit;word-wrap:break-word;line-height:21px;height:21px;color: #e50017!important;}
+.ak_checkout_talk_tipicon1{background-image: url(../images/icon.png);background-position: -270px -168px;width: 12px;height: 12px;display: inline-block;}
+
+/* customize check style */
+.ck_checkout_talk_default1{margin-top: 5px;padding: 0;box-sizing: border-box;font-family: inherit;word-wrap:break-word;line-height:21px;height:21px;color: #e50017!important;}
+.ck_checkout_talk_tipicon1{background-image: url(../images/icon.png);background-position: -270px -168px;width: 12px;height: 12px;display: inline-block;}
+
+
+html,body{
+	margin: 0px 0px;font-size: 13px !important;
+	/*微软雅黑，新宋体*/
+	font-family: "Microsoft Yahei","NSimSun";
+}
+
+.control-label{
+	font-size: 13px;
+	font-family: "Microsoft Yahei","NSimSun";
+	font-weight: bold;
+}
+
+.view-control{
+	display: block;width: 100%;height: 39px;padding: 9px 12px;line-height: 1.4;word-wrap:break-word;;
+}
+.view-textare-control{
+	display: block;width: 100%;min-height:120px;padding: 9px 12px;line-height: 1.4;word-wrap:break-word;;
+}
+
+button{
+	font-size: 13px !important;
+	font-family: "Microsoft Yahei","NSimSun" !important;
+}
+
+a{cursor: pointer;}
+
+/*Loading样式*/
+.dv_bg_loading_css {text-align: center; width: 100%;height: 100%;z-index: 99999;position: fixed;left: 0px;top: 0px;background-color: #FFF;}
+
+/*局部Loading样式*/
+.part_bg_loading {text-align: center; width: 100%;height: 100%;z-index: 99999;position: absolute;left: 0px;top: 0px;}
+.part_bg_loading_img {width: 100%;height: 100%;background: url("../images/loading.gif") no-repeat;background-position: center;}
+
+.width_80{width: 80px;}
+.width_100{width: 100px;}
+.width_120{width: 120px;}
+.width_150{width: 150px;}
+.width_200{width: 200px !important;}
+.width_240{width: 240px;}
+
+.lunzn_logo{background: url("../images/company/logo.jpg") no-repeat center;}
+
+/* 对话框样式 开始*/
+.dialogbox{
+	box-shadow: 0 6px 10px rgba(0,0,0,.3);position: absolute;background-color: #FFF;z-index: 1999;margin: 0px auto;
+	width: 350px;height:180px;display: none;
+}
+.dialogbox .box-header{
+	background-color: #6B7882;height: 40px;
+}
+
+.dialogbox .header-title{
+	float: left;line-height: 40px;height: 40px;margin-left: 10px;font-weight: bold;color:white;
+}
+
+.dialogbox .header-colse{
+	float: right;height: 40px;margin:12px 10px 0px 0px;
+	background: url("../images/window_normal.png") no-repeat center center;cursor:pointer;
+	width: 16px;height: 16px;
+}
+
+.dialogbox .header-colse:hover{
+	float: right;height: 40px;margin:12px 10px 0px 0px;
+	background: url("../images/window_close.png") no-repeat center center;cursor:pointer;
+	width: 16px;height: 16px;
+}
+
+.dialogbox .box-body{
+	height: 100px;margin: 0 auto;
+}
+
+.dialogbox .box-text{
+	margin: 0 auto;line-height:100px;height:100px;width: 350px;
+}
+
+.dialogbox .box-img{
+	width: 41px;height: 40px;border: 0px;margin-right: 10px;
+}
+
+.dialogbox .box-btns{
+	height: 30px;
+}
+/* 对话框样式 结束*/
+
+/* poster style */
+.dash_border {border: 0.5px dashed #bdc2c8;}
+.border_solid {border: 0.5px solid #bdc2c8;}
+.pictype_tip_span {width: 100%; text-left;display: inline-block;line-height: 15px;color: #666666;}
+.pic_tip_span {width: 100%; text-left;display: inline-block;line-height: 15px;color: #BBBDBF;}
+.subImg {max-width: 100%;max-height: 100%;cursor: pointer;width: 100%;height: 100%;display: none;}
+.addBgPic {background: url('../images/add_pic_bg.png') no-repeat;background-position: center;background-color: #F0F2F5;}
+.pointer {cursor: pointer;}
+.subRange {width: 38px;height: 30px;}
+.delIcon {background: url('../images/cancel.png') no-repeat;background-size: 100%;position: absolute;right: -10px;top: -10px;width: 20px;height: 20px;display: none;cursor: pointer;}
+.flagdiv .delIcon {display: none}
+.flagdiv:hover .delIcon {display: block}
+/* 审核人多选 */
+.auditor_selected {
+	position: relative;
+	text-align: center;
+	font-size: 14px;
+	color: #000000;
+	display: block;
+	float: left;
+	min-height: 25px;
+	cursor: pointer;
+	margin-top: 5px;
+	margin-right: 6px;
+	margin-bottom: 3px;
+	background-position: inherit;
+	widht: 55px;
+}
+/* 添加审核人按钮  */
+.auditor_add {
+	position: relative;
+	text-align: center;
+	font-size: 14px;
+	color: #000000;
+	display: block;
+	float: left;
+	min-height: 25px;
+	cursor: pointer;
+	margin-top: 5px;
+	margin-right: 6px;
+	margin-bottom: 3px;
+	background-position: inherit;
+	widht: 55px;
+}
+/* 删除按钮  */
+.auditor_selected_del {
+	position: absolute;
+	right: 19px;
+	top: -7px;
+	width: 15px;
+	height: 15px;
+	background: url('../../theme/images/auditor/cancel.png') no-repeat;
+	background-size: cover;
+	cursor: pointer;
+}
+
+/* 图片 */
+.auditorImg {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	border-radius: 4px;
+}

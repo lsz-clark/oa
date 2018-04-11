@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">zz</title>
+<link href="../../theme/3party/css/bootstrap-datetimepicker-4.17.47.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="../../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript" src="../../theme/3party/js/moment-2.18.1.min.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/zh-cn-2.18.1.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/bootstrap-datetimepicker-4.17.47.min.js" ></script>
+
+<link href="../../theme/3party/css/pnotify.brighttheme-3.2.1.css" rel="stylesheet">
+<link href="../../theme/3party/css/pnotify-3.2.1.css" rel="stylesheet">
+<script type="text/javascript" src="../../theme/3party/js/pnotify-3.2.1.js" ></script>
+
+<link href="../../theme/3party/css/tippy-0.3.0.css" rel="stylesheet">
+<script src="../../theme/3party/js/tippy-0.3.0.js"></script>
+
+<script type="text/javascript" src="js/zzedit.js??v=20180328"></script>
+<script type="text/javascript" src="../../theme/js/choose_audit.js??v=20180328"></script>
+
+<link href="../../theme/css/common.css??v=20180328" rel="stylesheet">
+</head>
+<body>
+    <div style="margin-top: 60px;">
+        <div class="container form-horizontal">
+
+            <!-- 表单标题 -->
+            <div class="row">
+                <div class="text-center col-xs-12 col-md-12">
+                    <h2 class="i18n-text">zz_title</h2>
+                    <input type="hidden" mkey="zzId">
+                </div>
+            </div>
+
+            <!-- 填表日期 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-9" style="text-align: right;">
+                        <span class="i18n-text">zz_form_date</span>
+                        <span id="zz_form_date">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 基本信息 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                     <div class="col-md-11">
+                         <div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_base_info</h3>
+						 </div>
+						 <div style="float: left; width: 20%;">
+							<div style="margin-top: 25px; float: right;">
+							    <label style="color: red;display: none;" class="i18n-text">option_reject</label>
+							    <label style="color: red;display: none;" id="rejectLabel"></label>
+							</div>
+						 </div>
+                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <!-- 姓名 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label i18n-text">full_name</label>
+                        <div class="col-md-8">
+                              <input
+                                  id="staffName"
+                                  mkey="staffName"
+                                  class="form-control i18n-text"
+                                  maxlength="20"
+                                  type="text"
+                                  placeholder="full_name"
+                                  value="" disabled="disabled"
+                              >
+                        </div>
+                    </div>
+                    <!-- 所在部门 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label i18n-text">department</label>
+                        <div class="col-md-8">
+                              <input
+                                  class="form-control i18n-text"
+                                  maxlength="20"
+                                  type="text"
+                                  id="department"
+                                  mkey="department"
+                                  placeholder="department"
+                                  value=""  disabled="disabled"
+                              >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <!-- 职位 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label i18n-text">position</label>
+                        <div class="col-md-8">
+                              <input
+                                  class="form-control i18n-text"
+                                  maxlength="20"
+                                  type="text"
+                                  id="position"
+                                  mkey="position"
+                                  placeholder="position"
+                                  value="" disabled="disabled"
+                              >
+                        </div>
+                    </div>
+                    <!-- 入职日期 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label i18n-text">joined_date</label>
+                        <div class="col-md-8">
+                            <div class="input-group date" id="entryDatePicker">
+                                <input type="text" id="entrydate" maxlength="10" mkey="entryDate" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <!-- 学历 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label i18n-text">education</label>
+                        <div class="col-md-8">
+                          <div class="input-group">
+                              <input
+                                  id="education"
+                                  class="form-control i18n-text"
+                                  maxlength="20"
+                                  type="text"
+                                  mkey="education"
+                                  placeholder="education"
+                              >
+                              <span class="input-group-addon clear-data">
+                                  <span class="glyphicon glyphicon-remove"></span>
+                              </span>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- 毕业日期 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label i18n-text">graddate</label>
+                        <div class="col-md-8">
+                            <div class="input-group date" id="gradDatePicker">
+                                <input type="text" id="gradDate" maxlength="10" mkey="gradDate" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 拟转正日期 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label i18n-text">zz_staff_zzdate</label>
+                        <div class="col-md-8">
+                            <div class="input-group date" id="zzDatePicker">
+                                <input type="text" id="zzDate" maxlength="10" mkey="zzDate" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工作成果 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                     <div class="col-md-11" >
+                         <div style="float: left;width: 80%;"><h3 class="i18n-text">zz_effort</h3></div>
+                         <div style="float: left;width: 20%;">
+                             <span style="font-size:20px;margin-top: 25px;float: right;" id="question-effort" class="glyphicon glyphicon-question-sign"></span>
+                             <div id="exmple-effort" style="display: none;">
+                                 <div class="text-left">试用期期间为公司所做的贡献</div>
+                                 <div class="text-left">1. 办公环境秩序维护</div>
+                                 <div class="text-left">2. 处理了N起用户反馈问题</div>
+                                 <div class="text-left">3. 完成XX产品交付</div>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <textarea
+                            id="effort"
+                            class="form-control i18n-text"
+                            mkey="effort"
+                            maxlength="1024"
+                            rows="5" placeholder="placeholder1024"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 个人收获 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                     <div class="col-md-11">
+                         <div style="float: left;width: 80%;"><h3 class="i18n-text">zz_gain</h3></div>
+                         <div style="float: left;width: 20%;">
+                             <span style="font-size:20px;margin-top: 25px;float: right;" id="question-gain" class="glyphicon glyphicon-question-sign"></span>
+                             <div id="exmple-gain" style="display: none;">
+                                 <div class="text-left">试用期期间个人收获了什么技术、业务、管理能力等等...</div>
+                                 <div class="text-left">1. 学会了excel的高级功能</div>
+                                 <div class="text-left">2. 熟悉了公司XX产品的业务、经验</div>
+                                 <div class="text-left">3. 掌握了XX技术、YY框架</div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-md-1"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <textarea
+                            id="gain"
+                            class="form-control i18n-text"
+                            mkey="gain"
+                            maxlength="1024"
+                            rows="5" placeholder="placeholder1024"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 心得&建议 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-11">
+                        <div style="float: left;width: 80%;"><h3 class="i18n-text">zz_suggest</h3></div>
+                         <div style="float: left;width: 20%;">
+                             <span style="font-size:20px;margin-top: 25px;float: right;" id="question-suggest" class="glyphicon glyphicon-question-sign"></span>
+                             <div id="exmple-suggest" style="display: none;">
+                                 <div class="text-left">试用期期间一些心得与对公司的一些建议</div>
+                                 <div class="text-left">1. 组织人员培训，倡导跨界学习</div>
+                                 <div class="text-left">2. 增添下午茶，增强公司与员工情感</div>
+                                 <div class="text-left">3. 不断抛弃自己的存量,去寻找新的增量</div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10" id="bootstrapGrowl">
+                        <textarea
+                            id="suggest"
+                            class="form-control i18n-text"
+                            mkey="suggest"
+                            maxlength="1024"
+                            rows="5" placeholder="placeholder1024"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            
+			<!-- 审核人 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_auditor</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10" id="bootstrapGrowl">
+						<!-- 审核人tags  -->
+						<div id="auditorTags">
+							<!-- 添加按钮 -->
+							<div class="auditor_add" style="width: 45px;">
+								<div style="width:45px;margin-left:0px;">
+									<img alt="" src="../../theme/images/auditor/selectadd.png" style="width:40px;height: 40px;display: inline-block">
+								</div>
+							</div>
+							
+						</div>
+						
+						<div style="clear: both;"></div>
+						<div id="chooseAuditorTips" class="ck_checkout_talk_default1" style="display: none;">
+				            <i class="ck_checkout_talk_tipicon1"></i>
+				            <span style="margin-left: 3px;" class="i18n-text">please_choose_auditor</span>
+				        </div>
+					</div>
+				</div>
+			</div>
+			<!-- 抄送人-->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_sec_auditor</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10" id="bootstrapGrowl">
+						<!-- 抄送人tags  -->
+						<div id="copyAuditorTags">
+							
+							<!-- 添加按钮 -->
+							<div class="auditor_add" style="width: 45px;">
+								<div style="width:45px;margin-left:0px;">
+									<img alt="" src="../../theme/images/auditor/selectadd.png" style="width:40px;height: 40px;display: inline-block">
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+            
+            <!-- 历史审核区域 -->
+			<div>
+			    <br>
+				<div class="panel panel-default" id="historyAuditDiv" style="display: none;">
+				    <div class="panel-heading" align="center" id="historyAuditBtn" style="cursor: pointer;border: 0px;">
+						<label class="i18n-text">history_audit</label>
+						<span id="history-Un-Fold" class="glyphicon glyphicon-plus"></span>
+					</div>
+				</div>
+			</div>
+            
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="form-group col-md-12">
+                        <div class="col-md-12" align="center">
+                            <!-- 提交 -->
+                            <button id="submitBtn" class="btn btn-danger width_100 i18n-text" type="button">submit</button>
+                            <!-- 保存草稿 -->
+                            <button id="saveBtn" class="btn btn-default width_100 i18n-text" type="button">save_draft</button>
+                            <!-- 返回 -->
+                            <button id="backBtn" class="btn btn-default width_100 i18n-text" type="button">back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

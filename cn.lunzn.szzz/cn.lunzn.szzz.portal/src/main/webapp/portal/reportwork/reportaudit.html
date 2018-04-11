@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">report_work</title>
+<link href="../../theme/3party/css/bootstrap-datetimepicker-4.17.47.min.css" rel="stylesheet">
+<link href="../../theme/3party/css/bootstrap-switch-3.3.4.min.css" rel="stylesheet">
+<link href="../../theme/3party/css/tippy-0.3.0.css" rel="stylesheet">
+<link href="../../theme/3party/css/pnotify.brighttheme-3.2.1.css" rel="stylesheet">
+<link href="../../theme/3party/css/pnotify-3.2.1.css" rel="stylesheet">
+<script src="../../theme/3party/js/tippy-0.3.0.js"></script>
+
+<script type="text/javascript" src="../../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript" src="../../theme/3party/js/moment-2.18.1.min.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/zh-cn-2.18.1.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/bootstrap-switch-3.3.4.min.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/bootstrap-datetimepicker-4.17.47.min.js" ></script>
+<script type="text/javascript" src="../../theme/3party/js/pnotify-3.2.1.js" ></script>
+
+
+<script type="text/javascript" src="./js/reportaudit.js??v=20180328.1"></script>
+<style>
+#title{ 
+    text-align:center;
+	}
+.left { 
+    text-align:center;
+    margin-left:20%;
+	}
+.label_calss { 
+    text-align:left;
+    margin-left:22%;
+    
+	}
+	.tippy-tooltip.honeybee-theme{
+  /* Your styling here. Example: */
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+	<div style="margin-top: 60px;">
+		<div class="container form-horizontal">
+			<!-- 表单标题 -->
+			<div class="row">
+				<div class="text-center col-xs-12 col-md-12" id='title'>
+					<!-- <span style="font-family:arial;font-size:32px;font-weight:900;">年度述职报告</span> -->
+					<h2 class="i18n-text">report_title</h2>
+				</div>
+			</div>	
+
+			<!-- 填表日期 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div id='date' class="col-md-9" style="text-align: right;">
+						<span class="i18n-text">report_form_date</span>
+					</div>
+				</div>
+			</div>
+			<!-- 基本信息 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                        <div class="col-md-11">
+							<div style="float: left; width: 80%;">
+								<h3 class="i18n-text " style="display : inline">report_base_info</h3>
+							</div>
+							<div style="float: left; width: 20%;">
+								<div style="margin-top: 25px; float: right;">
+								    <label style="color: red;display: none;" class="i18n-text">option_reject</label>
+								    <label style="color: red;display: none;" id="rejectTime"></label>
+								</div>
+        					</div>
+        				</div>
+                </div>
+            </div>
+			<div class="row">
+		        <div class="col-xs-12 col-md-12">
+		            <!-- 姓名 -->
+		            <div class="form-group col-md-6">
+		                <label class="col-md-4 control-label i18n-text">full_name</label>
+		                <div class="col-md-8">
+		                      <input
+		                          id="staffName"
+		                          mkey="staffName"
+		                          class="form-control i18n-text"
+		                          maxlength="20"
+		                          type="text"
+		                          placeholder="full_name"
+		                      >
+		                </div>
+		            </div>
+		            <!-- 所在部门 -->
+		            <div class="form-group col-md-6">
+		                <label class="col-md-3 control-label i18n-text">department</label>
+ 						<div class="col-md-8">
+		                      <input
+		                          class="form-control i18n-text"
+		                          maxlength="20"
+		                          type="text"
+		                          id="department"
+		                          mkey="department"
+		                          placeholder="department"
+		                      >
+		                </div>
+		            </div>
+		        </div>
+			</div>
+			<div class="row">
+	                <div class="col-xs-12 col-md-12">
+	                    <!-- 职位 -->
+	                    <div class="form-group col-md-6">
+	                        <label class="col-md-4 control-label i18n-text">position</label>
+	                        <div class="col-md-8">
+	                              <input
+	                                  class="form-control i18n-text"
+	                                  maxlength="20"
+	                                  type="text"
+	                                  id="position"
+	                                  mkey="position"
+	                                  placeholder="position"
+	                              >
+	                        </div>
+	                    </div>
+	                    <!-- 入职日期 -->
+	                    <div class="form-group col-md-6">
+	                        <label class="col-md-3 control-label i18n-text">joined_date</label>
+	                        <div class="col-md-8">
+	                            <div class="input-group date" id="entryDatePicker">
+	                                <input type="text" id="entrydate" mkey="entrydate" class="form-control">
+	                                <span class="input-group-addon">
+	                                    <span class="glyphicon glyphicon-calendar"></span>
+	                                </span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+            		<!-- 学历 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label i18n-text">education</label>
+                        <div class="col-md-8">
+                          <div class="input-group">
+                              <input
+                                  id="education"
+                                  class="form-control i18n-text"
+                                  maxlength="20"
+                                  type="text"
+                                  mkey="education"
+                                  placeholder="education"
+                              >
+                              <span class="input-group-addon clear-data">
+                                  <span class="glyphicon glyphicon-remove"></span>
+                              </span>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- 毕业日期 -->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3 control-label i18n-text">graddate</label>
+                        <div class="col-md-8">
+                            <div class="input-group date" id="gradDatePicker">
+                                <input type="text" id="gradDate" mkey="gradDate" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 述职年份 -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+			        <div class="form-group col-md-6">
+			            <label class="col-md-4 control-label i18n-text">time_quantum</label>
+			            <div class="col-md-8">
+                            <div class="input-group date" id="reportDatePicker">
+                                <input type="text" id="reportdate" mkey="reportdate" class="form-control">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+			        </div>
+                </div>
+            </div>
+            
+            <!-- <div id="tipsText" class="i18n-text"
+             style="position:absolute;display:none;border:1px solid silver;z-index：999999;">tips</div> -->
+            <!-- 工作总结label -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                        <div class="col-md-11">
+							<div style="float: left; width: 80%;">
+								<h3 class="i18n-text">report_work_summary</h3>
+							</div>
+							<div style="float: left; width: 20%;">
+								<span id="summaryTips" style="font-size:20px;margin-top: 25px;float: right;" 
+								class="glyphicon glyphicon-question-sign"></span>
+        					</div>
+        				</div>
+                        
+                </div>
+            </div>
+            <!-- 工作总结text -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <textarea
+                            id="summaryText"
+                            class="form-control"
+                            mkey="summaryText"
+                            maxlength="1024"
+                            rows="5"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 自我评价label -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                        <div class="col-md-11">
+							<div style="float: left; width: 80%;">
+								<h3 class="i18n-text">report_self_appraisal</h3>
+        					</div>
+							<div style="float: left; width: 20%;">
+	                        	<span id="appraisalTips" style="font-size:20px;margin-top: 25px;float: right;" 
+	                        	class="glyphicon glyphicon-question-sign"></span>
+	                    	</div>
+                    	</div>
+                </div>
+            </div>
+            <!-- 自我评价text -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <textarea
+                            id="appraisalText"
+                            class="form-control"
+                            mkey="appraisalText"
+                            maxlength="1024"
+                            rows="5"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 不足&改进label -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                        <div class="col-md-11">
+							<div style="float: left; width: 80%;">
+								<h3 class="i18n-text">report_better</h3>
+        					</div>
+							<div style="float: left; width: 20%;">
+                        		<span id="betterTips" style="font-size:20px;margin-top: 25px;float: right;" 
+                        		class="glyphicon glyphicon-question-sign"></span>
+                    		</div>                    
+						</div>
+                </div>
+            </div>
+            <!-- 不足&改进text -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                         <textarea
+                            id="betterText"
+                            class="form-control"
+                            mkey="betterText"
+                            maxlength="1024"
+                            rows="5"
+                        ></textarea> 
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 成长规划label -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                        <div class="col-md-11">
+							<div style="float: left; width: 80%;">
+								<h3 class="i18n-text">report_growth_plan</h3>
+        					</div>
+							<div style="float: left; width: 20%;">
+                        		<span id="planTips" style="font-size:20px;margin-top: 25px;float: right;" 
+                        		class="glyphicon glyphicon-question-sign"></span>
+                    		</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 成长规划text -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <textarea
+                            id="planText"
+                            class="form-control"
+                            mkey="planText"
+                            maxlength="1024"
+                            rows="5"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 审核人 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_auditor</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<!-- 审核人tags  -->
+						<div id="auditorTags">
+							<!-- 添加按钮 -->
+							<div class="auditor_add" style="width: 45px;">
+								<div style="width:45px;margin-left:0px;">
+									<img alt="" src="../../theme/images/auditor/selectadd.png" style="width:40px;height: 40px;display: inline-block">
+								</div>
+							</div>
+							
+						</div>
+						<div style="clear: both;"></div>
+						<div id="chooseAuditorTips" class="ck_checkout_talk_default1" style="display: none;">
+				            <i class="ck_checkout_talk_tipicon1"></i>
+				            <span style="margin-left: 3px;" class="i18n-text">please_choose_auditor</span>
+				        </div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 抄送人 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-11">
+						<div style="float: left; width: 80%;">
+							<h3 class="i18n-text">zz_sec_auditor</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<!-- 抄送人tags  -->
+						<div id="copyAuditorTags">
+							<!-- 添加按钮 -->
+							<div class="auditor_add" style="width: 45px;">
+								<div style="width:45px;margin-left:0px;">
+									<img alt="" src="../../theme/images/auditor/selectadd.png" style="width:40px;height: 40px;display: inline-block">
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+            
+			<!-- 历史审核区域 -->
+			<div>
+			    <br>
+				<div class="panel panel-default" id="historyAuditDiv" style="display: none;">
+				    <div class="panel-heading" align="center" id="historyAuditBtn" style="cursor: pointer;border: 0px;">
+						<label class="i18n-text">history_audit</label>
+						<span id="history-Un-Fold" class="glyphicon glyphicon-plus"></span>
+					</div>
+	            </div>
+			</div>
+           <!-- 评语区 -->
+           <div class="row">
+               <div class="col-xs-12 col-md-12">
+                       <div class="col-md-11">
+						<h3 class="i18n-text " style="display : inline">audit_label</h3>
+       				</div>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-xs-12 col-md-12">
+                   <div class="col-md-1"></div>
+                   <div class="col-md-10">
+                       <textarea
+                           id="auditText"
+                           class="form-control i18n-text"
+                           mkey="auditText"
+                           maxlength="1024"
+                           rows="5"
+                           placeholder="agree"
+                       ></textarea>
+                   </div>
+               </div>
+           </div>
+           <br/>
+           <!-- 操作按钮 -->
+           <div class="row">
+               <div class="col-xs-12 col-md-12">
+                   <div class="form-group col-md-12">
+                       <div class="col-md-12" align="center">
+                           <!-- 提交 -->
+                           <button id="passBtn" class="btn btn-danger width_100 i18n-text" type="button">option_pass</button>
+                           <!-- 保存草稿 -->
+                           <button id="rejectBtn" class="btn btn-default width_100 i18n-text" type="button">option_reject</button>
+                           <!-- 返回 -->
+                           <button id="commonBackBtn" class="btn btn-default width_100 i18n-text" type="button">cancel</button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+		</div>
+	</div>
+	
+</body>
+</html>

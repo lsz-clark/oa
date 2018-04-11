@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="i18n-text">lunzn_oa</title>
+<script type="text/javascript"
+	src="../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../theme/js/common.js??v=20180328"></script>
+<script type="text/javascript" src="../theme/js/head_menu.js??v=20180328"></script>
+
+<script type="text/javascript" src="home.js??v=20180328"></script>
+</head>
+<body>
+	<header style="margin-top: 80px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-12 herobanner_content">
+					<div class="col-md-6">
+						<h2 class="i18n-text">welcome_use</h2>
+						<p class="i18n-text">home_meet_say</p>
+                        
+                        <br>
+						<!-- Single button -->
+						<div class="btn-group">
+							<button type="button" id="languageBtn" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
+								<sapn id="languageBtnText">简体中文</sapn> <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#" ivalue="zh-cn">简体中文</a></li>
+								<li><a href="#" ivalue="zh-tw">繁體中文</a></li>
+								<li><a href="#" ivalue="en-us">English</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<img class="img-responsive center-block"
+							src="../theme/images/home/home_banner.png">
+					</div>
+				</div>
+			</div>
+			
+			<!-- 待我审核 -->
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-12 col-md-12">
+				    <div class="col-md-12">
+				    <div class="panel panel-default">
+					  <div class="panel-heading">
+					      <div style="float: left;width: 80%;padding-top: 4px;" class="i18n-text">let_me_check</div>
+					      <div style="float: right;width: 19%;text-align: right;">
+					          <button class="btn btn-danger" id="moreCheckBtn" style="padding: 2px 3px;display: none;">More</button>
+					      </div>
+					      <div style="clear: both;"></div>
+					  </div>
+					  <div class="panel-body" id="letMeCheckBody">
+					      <label id="letMeCheckNotFound" class="i18n-text" style="display: none;">no_record_be_found</label>
+					  </div>
+					</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 个人述职、转正审核进度 -->
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+				    <div class="col-md-6">
+					    <div class="panel panel-default">
+						  <div class="panel-heading">
+						      <div style="float: left;width: 80%;padding-top: 4px;" class="i18n-text">me_sz</div>
+						      <div style="float: right;width: 19%;text-align: right;">
+						          <button class="btn btn-danger" id="moreSzBtn" style="padding: 2px 3px;display: none;">More</button>
+						      </div>
+						      <div style="clear: both;"></div>
+						  </div>
+						  <div class="panel-body" id="szBody">
+						      <label id="szNotFound" class="i18n-text" style="display: none;">no_record_be_found</label>
+						      <div id="szBodyContent" style="display: none;">
+							      <label><font class="i18n-text">id</font>&nbsp;<font id="szId"></font></label>&nbsp;&nbsp;|&nbsp;
+							      <label><font class="i18n-text">time_quantum</font>&nbsp;<font id="szQuantum"></font></label>&nbsp;&nbsp;|&nbsp;
+							      <label><font class="i18n-text">state</font>&nbsp;<font id="szState"></font></label>
+						      </div>
+						  </div>
+						</div>
+					</div>
+					
+					<div class="col-md-6">
+					    <div class="panel panel-default">
+						  <div class="panel-heading">
+						      <div style="float: left;width: 80%;padding-top: 4px;" class="i18n-text">me_zz</div>
+						      <div style="float: right;width: 19%;text-align: right;">
+						          <button class="btn btn-danger" id="moreZzBtn" style="padding: 2px 3px;display: none;">More</button>
+						      </div>
+						      <div style="clear: both;"></div>
+						  </div>
+						  <div class="panel-body" id="zzBody">
+						      <label id="zzNotFound" class="i18n-text" style="display: none;">no_record_be_found</label>
+						      <div id="zzBodyContent" style="display: none;">
+							      <label><font class="i18n-text">id</font>&nbsp;<font id="zzId"></font></label>&nbsp;&nbsp;|&nbsp;
+							      <label><font class="i18n-text">zz_date</font>&nbsp;<font id="zzDate"></font></label>&nbsp;&nbsp;|&nbsp;
+							      <label><font class="i18n-text">state</font>&nbsp;<font id="zzState"></font></label>
+						      </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</header>
+
+</body>
+</html>

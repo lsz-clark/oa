@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LUNZN OA</title>
+<script type="text/javascript" src="../../theme/3party/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="../../theme/js/common.js??v=20180328"></script>
+<style type="text/css">
+.content {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin-top: 100px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.button {
+	width: 150px;
+	height: 50px;
+	font-size: 14px !important;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<div class="content">
+		<button id="performanceBtn" class="btn btn-default button" type="button">绩效辅导</button><br>
+		<button id="szzzBtn" class="btn btn-default button" style="margin-top: 25px;" type="button">述职&转正</button>
+	</div>
+</body>
+<script type="text/javascript">
+$(function(){
+	$("#performanceBtn").click(function(){
+		window.location.href="http://oa.lunzn.com:7070/performance/autoLogin?code="+$.getUrlParam("code");
+	});
+	
+    $("#szzzBtn").click(function(){
+    	window.location.href="http://oa.lunzn.com:6060/szzz/staff/alogin?code="+$.getUrlParam("code");
+	});
+});
+</script>
+</html>

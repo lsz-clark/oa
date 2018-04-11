@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 员工转正DAO -->
+<mapper namespace="cn.lunzn.zz.server.dao.ZZDao">
+    
+	<resultMap type="cn.lunzn.model.zz.ZZ" id="zzInfo">
+		<result column="zzid" property="zzId" />
+		<result column="staffid" property="staffId" />
+		<result column="staffname" property="staffName" />
+		<result column="position" property="position" />
+		<result column="department" property="department" />
+		<result column="entrydate" property="entryDate" />
+		<result column="graddate" property="gradDate" />
+		<result column="education" property="education" />
+		<result column="zzdate" property="zzDate" />
+		<result column="state" property="state" />
+		<result column="submitdate" property="submitDate" />
+		<result column="effort" property="effort" />
+		<result column="gain" property="gain" />
+		<result column="suggest" property="suggest" />
+		<result column="auditor" property="auditor" />
+		<result column="cc" property="cc" />
+	</resultMap>
+
+	<!-- 分页 -->
+	<sql id="limit_body">
+		limit #{page.offset},#{page.pageSize}
+	</sql>
+	
+	<!-- 查询记录数据 -->
+	<select id="find" resultMap="zzInfo">
+		SELECT zzid,staffid,staffname,position,department,entrydate,graddate,education,zzdate,state,submitdate,effort,gain,suggest,
+		auditor,cc
+		FROM t_zz_info
+		WHERE 1 = 1
+		<if test="zzId!=null">and zzid = #{zzId}</if>
+		<choose>
+		    <when test="isAdmin">
+		        and (state != 1 or staffid = #{staffId})
+		    </when>
+		    <otherwise>
+               <if test="staffId!=null">and staffid = #{staffId}</if>
+            </otherwise>
+		</choose>
+		<if test="state!=null">and state = #{state}</if>
+		<if test="staffName!=null"><![CDATA[AND staffname like concat('%',#{staffName},'%')]]></if>
+	    ORDER BY submitdate desc
+		<if test="null != page">
+            <include refid="limit_body" />
+        </if>
+	</select>
+	
+	<!-- 查询总记录数 -->
+	<select id="findTotal" resultType="int">
+		SELECT count(1) FROM t_zz_info
+		WHERE 1 = 1
+		<if test="zzId!=null">and zzid = #{zzId}</if>
+		<choose>
+		    <when test="isAdmin">
+		        and (state != 1 or staffid = #{staffId})
+		    </when>
+		    <otherwise>
+                <if test="staffId!=null">and staffid = #{staffId}</if>
+            </otherwise>
+		</choose>
+		<if test="state!=null">and state = #{state}</if>
+		<if test="staffName!=null"><![CDATA[AND staffname like concat('%',#{staffName},'%')]]></if>
+	</select>
+	
+	<!-- 添加记录 -->
+   <insert id="insert">
+		INSERT INTO `t_zz_info` (`staffid`,`staffname`,`position`,`department`,`entrydate`,
+		`graddate`,`education`,`zzdate`,`state`,`submitdate`,`effort`,`gain`,`suggest`,
+		`auditor`,`cc`) 
+		VALUES(#{staffId},#{staffName},#{position},#{department},#{entryDate},#{gradDate},
+		#{education},#{zzDate},#{state},#{submitDate},#{effort},#{gain},#{suggest},
+		#{auditor},#{cc})
+   </insert>
+   
+   <!-- 更新记录 -->
+   <update id="update">
+		UPDATE `t_zz_info` SET `staffname` = #{staffName},`position` = #{position},
+		`department` = #{department},`entrydate` = #{entryDate},
+		`graddate` = #{gradDate},`education` = #{education},`zzdate` = #{zzDate},`state` = #{state},
+		`effort` = #{effort}, `gain` = #{gain}, `suggest` = #{suggest},
+		`auditor`=  #{auditor},`cc` = #{cc}
+        WHERE `zzid` = #{zzId}
+   </update>
+   
+</mapper>

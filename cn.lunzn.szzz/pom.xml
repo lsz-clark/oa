@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cn.lunzn.szzz</groupId>
+	<artifactId>cn.lunzn.szzz</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+  
+    <!-- 版本配置信息 -->
+  	<properties>
+  	    <spring-version>4.3.5.RELEASE</spring-version>
+		<my.version>1.0.0</my.version>
+		<spring.boot.version>1.4.3.RELEASE</spring.boot.version>
+	</properties>
+  
+	<modules>
+		<module>cn.lunzn.common</module>
+		<module>cn.lunzn.model</module>
+		<module>cn.lunzn.sz.server</module>
+		<module>cn.lunzn.zz.server</module>
+		<module>cn.lunzn.szzz.portal</module>
+	</modules>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>cn.lunzn.szzz</groupId>
+				<artifactId>cn.lunzn.common</artifactId>
+				<version>${my.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>cn.lunzn.szzz</groupId>
+				<artifactId>cn.lunzn.model</artifactId>
+				<version>${my.version}</version>
+			</dependency>
+			
+			<!-- spring -->
+	        <dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-web</artifactId>
+			    <version>${spring-version}</version>
+		    </dependency>
+		    <dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-tx</artifactId>
+			    <version>${spring-version}</version>
+		    </dependency>
+		    
+		    <!-- web -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<!-- httpClient -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.5.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient-cache</artifactId>
+				<version>4.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpmime</artifactId>
+				<version>4.5.2</version>
+			</dependency>
+			
+			<!-- json -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.7</version>
+			</dependency>
+			
+			<!-- jsoup -->
+			<dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>1.9.2</version>
+            </dependency>
+			
+			<!-- apache lang -->
+			<dependency>  
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+			
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.36</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+</project>
